@@ -10,6 +10,14 @@ var EYES_COLORS = ['black', 'red', 'blue', 'yellow', 'green'];
 var FIREBALL_COLORS = ['#ee4830', '#30a8ee', '#5ce6c0', '#e848d5', '#e6e848'];
 var WIZARDS_COUNTER = 4;
 
+// Функция, возвращающая случайный элемемент массива
+var getRandomElement = function (array) {
+  var randomIndex = Math.floor(Math.random() * array.length);
+  var randomElement = array[randomIndex];
+
+  return randomElement;
+};
+
 var userDialog = document.querySelector('.setup');
 var openDialog = document.querySelector('.setup-open');
 var closeDialog = userDialog.querySelector('.setup-close');
@@ -89,8 +97,8 @@ wizardPlayer.addEventListener('click', function (evt) {
   }
 
   if (target.classList.contains('setup-fireball')) {
-    fireball.style.background = getRandomElement(FIREBALL_COLORS);
-    wizardPlayer.querySelector('input[name="fireball-color"]').value = fireball.style.background;
+    wizardPlayer.querySelector('input[name="fireball-color"]').value = getRandomElement(FIREBALL_COLORS);
+    fireball.style.background = wizardPlayer.querySelector('input[name="fireball-color"]').value;
   }
 });
 
@@ -104,15 +112,7 @@ var similarWizardTemplate = document.querySelector('#similar-wizard-template')
   .content
   .querySelector('.setup-similar-item');
 
-// Функция, возвращающая случайный элемемент массива
-function getRandomElement(array) {
-  var randomIndex = Math.floor(Math.random() * array.length);
-  var randomElement = array[randomIndex];
-
-  return randomElement;
-}
-
-function createDataArray() {
+var createDataArray = function () {
   var wizards = [];
   for (var i = 0; i < WIZARDS_COUNTER; i++) {
 
@@ -124,7 +124,7 @@ function createDataArray() {
   }
 
   return wizards;
-}
+};
 
 var dataWizards = createDataArray();
 
