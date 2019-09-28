@@ -96,6 +96,7 @@ wizardPlayer.addEventListener('click', function (evt) {
 
 
 // Работа с DOM
+
 var similarListElement = userDialog.querySelector('.setup-similar-list');
 
 // Нашли шаблон и контент внутри него
