@@ -80,7 +80,7 @@
     var dataForm = new FormData(form);
 
     var closeForm = function () {
-      document.classList.add('hidden');
+      document.querySelector('.setup').classList.add('hidden');
     };
 
     window.backend.upload(dataForm, closeForm, onFormErrorLoad);
